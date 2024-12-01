@@ -89,8 +89,8 @@ function BigWeatherBox({geo=false, locationObj, weatherObj}) {
           <span className='temperature'>{Math.round(temperature)}{temperatureUnit}</span>
       </div>
       <div className='conditionsRow'>
-        <span className='wind'>Wind: {convertWindDirection(windDirection)} {Math.round(windSpeed)}{windSpeedUnit}</span>
-        <span className='precipitation'>{displayPrecipitationProbability(precipitationChance, snow, rain, showers, temperature)}</span>
+        <span className='windBig'>Wind: {convertWindDirection(windDirection)} {Math.round(windSpeed)}{windSpeedUnit}</span>
+        <span className='precipitationBig'>{displayPrecipitationProbability(precipitationChance, snow, rain, showers, temperature)}</span>
       </div>
       <div className='conditionsRow'>
         <span className='smallTemperature'>10°C</span>
