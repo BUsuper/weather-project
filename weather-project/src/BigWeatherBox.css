@@ -1,0 +1,88 @@
+.bigWeatherBox {
+    width: 380px;
+    height: 380px;
+    border: black 7.5px solid;
+    border-radius: 22.5px;
+    padding: 10px;
+    background-color: white;
+    z-index: 100;
+    position: fixed;
+}
+
+.topRow {
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.middleRow {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    margin: 15px auto;
+}
+
+.geolocationIcon {
+    width: 40px;
+    height: 30px;
+}
+
+.location {
+    width: 340px;
+    height: 30px;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+}
+
+.time {
+    width: 380px;
+    height: 30px;
+    margin-top: 10px;
+    line-height: 30px;
+}
+
+.conditionsIcon {
+    width: 100px;
+    height: 100px;
+}
+
+.temperature {
+    width: 280px;
+    height: 100px;
+    display: inline-block;
+    font-size: 96px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 100px;
+}
+
+.conditionsRow {
+    width: 400px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.wind, .precipitation, .smallTemperature {
+    width: 200px;
+    height: 30px;
+    display: inline-block;
+    text-align: left;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.forecastRow {
+    width: 400px;
+    height: 70px;
+    margin: 15px auto;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.deleteIcon {
+    height: 30px;
+    width: 30px;
+}
