@@ -79,27 +79,27 @@ function BigWeatherBox({geo=false, locationObj, weatherObj}) {
 
   return (
     <div className="bigWeatherBox">
-      <div className='topRow'>
-          {geo ? <img src={locationArrow} className='geolocationIcon'/> : <img src={locationArrow} className='geolocationIcon hidden'/>}
-          <span className='location'>{city}, {country}</span>
+      <div className='topRowBig'>
+          {geo ? <img src={locationArrow} className='geolocationIconBig'/> : <img src={locationArrow} className='geolocationIconBig hidden'/>}
+          <span className='locationBig'>{city}, {country}</span>
       </div>
-      <div className='time'>12:00</div>
-      <div className='middleRow'>
-          <img src={conditionsSrc} className='conditionsIcon'/>
-          <span className='temperature'>{Math.round(temperature)}{temperatureUnit}</span>
+      <div className='timeBig'>12:00</div>
+      <div className='middleRowBig'>
+          <img src={conditionsSrc} className='conditionsIconBig'/>
+          <span className='temperatureBig'>{Math.round(temperature)}{temperatureUnit}</span>
       </div>
-      <div className='conditionsRow'>
+      <div className='conditionsRowBig'>
         <span className='windBig'>Wind: {convertWindDirection(windDirection)} {Math.round(windSpeed)}{windSpeedUnit}</span>
         <span className='precipitationBig'>{displayPrecipitationProbability(precipitationChance, snow, rain, showers, temperature)}</span>
       </div>
-      <div className='conditionsRow'>
-        <span className='smallTemperature'>10°C</span>
-        <span className='smallTemperature'>22°C</span>
+      <div className='conditionsRowBig'>
+        <span className='dayTemperatureBig'>10°C</span>
+        <span className='dayTemperatureBig'>22°C</span>
       </div>
-      <div className='forecastRow'>
+      <div className='forecastRowBig'>
 
       </div>
-      <img src={trashIcon} className='deleteIcon'/>
+      <img src={trashIcon} className='deleteIconBig'/>
     </div>
   );
 }
