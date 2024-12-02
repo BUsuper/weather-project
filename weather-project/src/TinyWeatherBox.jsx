@@ -1,23 +1,20 @@
-import './SmallWeatherBox.css'
-import locationArrow from './assets/location-arrow.svg'
+import './TinyWeatherBox.css'
 import sunnyIcon from './assets/sunny.svg'
 import moonIcon from './assets/night.svg'
 import cloudyIcon from './assets/cloudy.svg'
 import rainyIcon from './assets/rain.svg'
 import snowyIcon from './assets/snow.svg'
 
-function SmallWeatherBox({geo=false, locationObj, weatherObj}) {
-  const { country, city, lat, lon } = locationObj;
+function TinyWeatherBox({ weatherObj, index}) {
   const { hourly: weather, hourly_units: units } = weatherObj;
   const { temperature_2m: temperature,
-          wind_speed_10m: windSpeed,
-          wind_direction_10m: windDirection,
           precipitation_probability: precipitationChance,
           rain,
           snowfall: snow,
           showers,
           cloud_cover: cloudCover,
           is_day: isDay,
+          time,
   } = weather;
   const { temperature_2m: temperatureUnit,
           wind_speed_10m: windSpeedUnit,
@@ -74,20 +71,18 @@ function SmallWeatherBox({geo=false, locationObj, weatherObj}) {
     }
   }
 
-  const conditionsSrc = displayIcon(rain, showers, snow, cloudCover, isDay);
+  const conditionsSrc = displayIcon(rain[index], showers[index], snow[index], cloudCover[index], isDay[index]);
 
   return (
-    <div className="smallWeatherBox">
-      <div className='topRow'>
-          {geo ? <img src={locationArrow} className='geolocationIcon'/> : <img src={locationArrow} className='geolocationIcon hidden'/>}
-          <span className='location'>{city}</span>
+    <div className="tinyWeatherBox">
+      <div className='timeTiny'>
+        {time[index]}
       </div>
-      <div className='middleRow'>
-          <img src={conditionsSrc} className='conditionsIcon'/>
-          <span className='temperature'>{Math.round(temperature)}{temperatureUnit}</span>
+      <div className='conditionsRowTiny'>
+          <img src={conditionsSrc} className='conditionsIconTiny'/>
+          <span className='temperatureTiny'>{Math.round(temperature[index])}{temperatureUnit}</span>
       </div>
-      <div className='wind'>Wind: {convertWindDirection(windDirection)} {Math.round(windSpeed)}{windSpeedUnit}</div>
-      <div className='precipitation'>{displayPrecipitationProbability(precipitationChance, snow, rain, showers, temperature)}</div>
+      <div className='precipitationTiny'>{displayPrecipitationProbability(precipitationChance[index], snow[index], rain[index], showers[index], temperature[index])}</div>
     </div>
   );
 }
