@@ -3,6 +3,7 @@ import './App.css';
 import SmallWeatherBox from './SmallWeatherBox';
 import SmallAddBox from './SmallAddBox';
 import SearchBox from './SearchBox';
+import BigWeatherBox from './BigWeatherBox';
 
 function App() {
   const [currentLocation, setCurrentLocation] = useState({});
@@ -36,7 +37,7 @@ function App() {
   }
 
   async function getWeather(lat, lon) {
-    const wURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,rain,showers,snowfall,cloud_cover,wind_speed_10m,wind_direction_10m,wind_gusts_10m,is_day&wind_speed_unit=ms&forecast_hours=1`;
+    const wURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,rain,showers,snowfall,cloud_cover,wind_speed_10m,wind_direction_10m,wind_gusts_10m,is_day&wind_speed_unit=ms&timezone=auto&forecast_hours=6`;
     try {
       const res = await fetch(wURL);
       const weatherResult = await res.json();
@@ -56,6 +57,8 @@ function App() {
     if (currentLocation.lat && currentLocation.lon) {
       getWeather(currentLocation.lat, currentLocation.lon).then(weatherResult => {
         setCurrentWeather(weatherResult)
+        // DELETE THIS LATER!
+        console.log(weatherResult);
       });
     }
   }, [currentLocation]);
@@ -81,6 +84,10 @@ function App() {
                          locationObj={currentLocation}
                          weatherObj={currentWeather}
         />
+        {<BigWeatherBox geo={true} 
+                  locationObj={currentLocation}
+                  weatherObj={currentWeather}
+        />}
         {locationsWeather.length > 0
          ? locationsWeather.map((location, index) => {
           return <SmallWeatherBox geo={false}
