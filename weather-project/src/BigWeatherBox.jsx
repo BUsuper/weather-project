@@ -104,7 +104,7 @@ function BigWeatherBox({geo=false, locationObj, weatherObj}) {
           return <TinyWeatherBox weatherObj={weatherObj} index={i} key={`forecast${i}`} />
         })}
       </div>
-      <img src={trashIcon} className='deleteIconBig'/>
+      {geo ? <img src={trashIcon} className='deleteIconBig hidden'/> : <img src={trashIcon} className='deleteIconBig'/>}
     </div>
   );
 }
