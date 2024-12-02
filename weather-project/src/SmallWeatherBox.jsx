@@ -74,7 +74,7 @@ function SmallWeatherBox({geo=false, locationObj, weatherObj}) {
     }
   }
 
-  const conditionsSrc = displayIcon(rain, showers, snow, cloudCover, isDay);
+  const conditionsSrc = displayIcon(rain[0], showers[0], snow[0], cloudCover[0], isDay[0]);
 
   return (
     <div className="smallWeatherBox">
