@@ -84,10 +84,10 @@ function SmallWeatherBox({geo=false, locationObj, weatherObj}) {
       </div>
       <div className='middleRow'>
           <img src={conditionsSrc} className='conditionsIcon'/>
-          <span className='temperature'>{Math.round(temperature[0])}{temperatureUnit}</span>
+          <span className='temperature'>{Math.round(temperature)}{temperatureUnit}</span>
       </div>
-      <div className='wind'>Wind: {convertWindDirection(windDirection[0])} {Math.round(windSpeed[0])}{windSpeedUnit}</div>
-      <div className='precipitation'>{displayPrecipitationProbability(precipitationChance[0], snow[0], rain[0], showers[0], temperature[0])}</div>
+      <div className='wind'>Wind: {convertWindDirection(windDirection)} {Math.round(windSpeed)}{windSpeedUnit}</div>
+      <div className='precipitation'>{displayPrecipitationProbability(precipitationChance, snow, rain, showers, temperature)}</div>
     </div>
   );
 }
