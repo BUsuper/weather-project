@@ -33,6 +33,8 @@
     display: inline-block;
     text-align: center;
     line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden; /* Implement the scrolling text effect later. Maybe */
 }
 
 .time {
