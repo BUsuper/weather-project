@@ -78,6 +78,7 @@
     width: 380px;
     height: 70px;
     margin: 10px auto;
+    display: flex;
 }
 
 .hidden {

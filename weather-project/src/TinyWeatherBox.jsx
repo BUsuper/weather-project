@@ -17,7 +17,6 @@ function TinyWeatherBox({ weatherObj, index}) {
           time,
   } = weather;
   const { temperature_2m: temperatureUnit,
-          wind_speed_10m: windSpeedUnit,
   } = units;
 
   function convertWindDirection (degrees) {
@@ -76,9 +75,9 @@ function TinyWeatherBox({ weatherObj, index}) {
   return (
     <div className="tinyWeatherBox">
       <div className='timeTiny'>
-        {time[index]}
+        {time[index].slice(-5)}
       </div>
-      <div className='conditionsRowTiny'>
+      <div className='middleRowTiny'>
           <img src={conditionsSrc} className='conditionsIconTiny'/>
           <span className='temperatureTiny'>{Math.round(temperature[index])}{temperatureUnit}</span>
       </div>
@@ -87,4 +86,4 @@ function TinyWeatherBox({ weatherObj, index}) {
   );
 }
 
-export default SmallWeatherBox
+export default TinyWeatherBox

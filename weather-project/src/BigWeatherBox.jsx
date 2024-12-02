@@ -1,4 +1,5 @@
 import './BigWeatherBox.css'
+import TinyWeatherBox from './TinyWeatherBox'
 import locationArrow from './assets/location-arrow.svg'
 import sunnyIcon from './assets/sunny.svg'
 import moonIcon from './assets/night.svg'
@@ -8,6 +9,7 @@ import snowyIcon from './assets/snow.svg'
 import trashIcon from './assets/trash.svg'
 
 function BigWeatherBox({geo=false, locationObj, weatherObj}) {
+  const forecastHoursIndecies = [1, 2, 3, 4];
   const { country, city, lat, lon } = locationObj;
   const { hourly: weather, hourly_units: units } = weatherObj;
   const { temperature_2m: temperature,
@@ -19,6 +21,7 @@ function BigWeatherBox({geo=false, locationObj, weatherObj}) {
           showers,
           cloud_cover: cloudCover,
           is_day: isDay,
+          time,
   } = weather;
   const { temperature_2m: temperatureUnit,
           wind_speed_10m: windSpeedUnit,
@@ -75,7 +78,7 @@ function BigWeatherBox({geo=false, locationObj, weatherObj}) {
     }
   }
 
-  const conditionsSrc = displayIcon(rain, showers, snow, cloudCover, isDay);
+  const conditionsSrc = displayIcon(rain[0], showers[0], snow[0], cloudCover[0], isDay[0]);
 
   return (
     <div className="bigWeatherBox">
@@ -83,21 +86,23 @@ function BigWeatherBox({geo=false, locationObj, weatherObj}) {
           {geo ? <img src={locationArrow} className='geolocationIconBig'/> : <img src={locationArrow} className='geolocationIconBig hidden'/>}
           <span className='locationBig'>{city}, {country}</span>
       </div>
-      <div className='timeBig'>12:00</div>
+      <div className='timeBig'>{time[0].slice(-5)}</div>
       <div className='middleRowBig'>
           <img src={conditionsSrc} className='conditionsIconBig'/>
-          <span className='temperatureBig'>{Math.round(temperature)}{temperatureUnit}</span>
+          <span className='temperatureBig'>{Math.round(temperature[0])}{temperatureUnit}</span>
       </div>
       <div className='conditionsRowBig'>
-        <span className='windBig'>Wind: {convertWindDirection(windDirection)} {Math.round(windSpeed)}{windSpeedUnit}</span>
-        <span className='precipitationBig'>{displayPrecipitationProbability(precipitationChance, snow, rain, showers, temperature)}</span>
+        <span className='windBig'>Wind: {convertWindDirection(windDirection[0])} {Math.round(windSpeed[0])}{windSpeedUnit}</span>
+        <span className='precipitationBig'>{displayPrecipitationProbability(precipitationChance[0], snow[0], rain[0], showers[0], temperature[0])}</span>
       </div>
       <div className='conditionsRowBig'>
-        <span className='dayTemperatureBig'>10°C</span>
-        <span className='dayTemperatureBig'>22°C</span>
+        <span className='dayTemperatureBig'>Min: 10°C</span>
+        <span className='dayTemperatureBig'>Max: 22°C</span>
       </div>
       <div className='forecastRowBig'>
-
+        {forecastHoursIndecies.map(i => {
+          return <TinyWeatherBox weatherObj={weatherObj} index={i} key={`forecast${i}`} />
+        })}
       </div>
       <img src={trashIcon} className='deleteIconBig'/>
     </div>
