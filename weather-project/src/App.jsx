@@ -62,20 +62,21 @@ function App() {
     }
   }
 
+  // Gets user's coordinates based on their ip adress
   useEffect(() => {
     getCurrenLocation();
   }, []);
 
+  // Gets the weather in user's location
   useEffect(() => {
     if (gLocation.lat && gLocation.lon) {
       getWeather(gLocation.lat, gLocation.lon).then(weatherResult => {
         setGWeather(weatherResult)
-        // DELETE THIS LATER!
-        console.log(weatherResult);
       });
     }
   }, [gLocation]);
 
+  // Makes SearchBox disappear when the user clicks somewhere outside of it
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (searchRef.current && !searchRef.current.contains(e.target)) {
@@ -89,6 +90,7 @@ function App() {
     };
   }, [searchRef]);
 
+  // Makes BigWeatherBox disappear when the user clicks somewhere outside of it
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (bigWeatherRef.current && !bigWeatherRef.current.contains(e.target)) {
@@ -102,6 +104,7 @@ function App() {
     };
   }, [bigWeatherRef]);
 
+  // Renders when the data about user's weather is loaded, if not, renders 'Loading...'
   if (gWeather && gWeather.hourly && gWeather.hourly_units) {
     return (
       <>
