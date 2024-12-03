@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import './BigWeatherBox.css'
 import TinyWeatherBox from './TinyWeatherBox'
 import locationArrow from './assets/location-arrow.svg'
@@ -8,10 +9,12 @@ import rainyIcon from './assets/rain.svg'
 import snowyIcon from './assets/snow.svg'
 import trashIcon from './assets/trash.svg'
 
-function BigWeatherBox({geo=false, locationObj, weatherObj}) {
+const BigWeatherBox = forwardRef(
+function BigWeatherBox(props, ref) {
+  const {geo, locationObj, weatherObj} = props;
   const forecastHoursIndecies = [1, 2, 3, 4];
-  const { country, city, lat, lon } = locationObj;
-  const { hourly: weather, hourly_units: units } = weatherObj;
+  const { country, city } = locationObj;
+  const { hourly: weather, hourly_units: units, daily, } = weatherObj;
   const { temperature_2m: temperature,
           wind_speed_10m: windSpeed,
           wind_direction_10m: windDirection,
@@ -26,6 +29,9 @@ function BigWeatherBox({geo=false, locationObj, weatherObj}) {
   const { temperature_2m: temperatureUnit,
           wind_speed_10m: windSpeedUnit,
   } = units;
+  const { temperature_2m_min: minTemps,
+          temperature_2m_max: maxTemps,
+  } = daily;
 
   function convertWindDirection (degrees) {
       const directions = ['N', 'NNE', 'NE', 'ENE', 
@@ -81,7 +87,7 @@ function BigWeatherBox({geo=false, locationObj, weatherObj}) {
   const conditionsSrc = displayIcon(rain[0], showers[0], snow[0], cloudCover[0], isDay[0]);
 
   return (
-    <div className="bigWeatherBox">
+    <div className="bigWeatherBox" ref={ref}>
       <div className='topRowBig'>
           {geo ? <img src={locationArrow} className='geolocationIconBig'/> : <img src={locationArrow} className='geolocationIconBig hidden'/>}
           <span className='locationBig'>{city}, {country}</span>
@@ -96,8 +102,8 @@ function BigWeatherBox({geo=false, locationObj, weatherObj}) {
         <span className='precipitationBig'>{displayPrecipitationProbability(precipitationChance[0], snow[0], rain[0], showers[0], temperature[0])}</span>
       </div>
       <div className='conditionsRowBig'>
-        <span className='dayTemperatureBig'>Min: 10°C</span>
-        <span className='dayTemperatureBig'>Max: 22°C</span>
+        <span className='dayTemperatureBig'>Min: {Math.round(minTemps[0])}{temperatureUnit}</span>
+        <span className='dayTemperatureBig'>Max: {Math.round(maxTemps[0])}{temperatureUnit}</span>
       </div>
       <div className='forecastRowBig'>
         {forecastHoursIndecies.map(i => {
@@ -108,5 +114,6 @@ function BigWeatherBox({geo=false, locationObj, weatherObj}) {
     </div>
   );
 }
+)
 
 export default BigWeatherBox

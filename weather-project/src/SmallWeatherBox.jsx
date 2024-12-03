@@ -6,7 +6,7 @@ import cloudyIcon from './assets/cloudy.svg'
 import rainyIcon from './assets/rain.svg'
 import snowyIcon from './assets/snow.svg'
 
-function SmallWeatherBox({geo=false, locationObj, weatherObj}) {
+function SmallWeatherBox({geo=false, locationObj, weatherObj, onClick}) {
   const { country, city, lat, lon } = locationObj;
   const { hourly: weather, hourly_units: units } = weatherObj;
   const { temperature_2m: temperature,
@@ -77,7 +77,7 @@ function SmallWeatherBox({geo=false, locationObj, weatherObj}) {
   const conditionsSrc = displayIcon(rain[0], showers[0], snow[0], cloudCover[0], isDay[0]);
 
   return (
-    <div className="smallWeatherBox">
+    <div className="smallWeatherBox" onClick={onClick}>
       <div className='topRow'>
           {geo ? <img src={locationArrow} className='geolocationIcon'/> : <img src={locationArrow} className='geolocationIcon hidden'/>}
           <span className='location'>{city}</span>
