@@ -121,7 +121,7 @@ function App() {
         <SmallWeatherBox geo={true} 
                          locationObj={gLocation}
                          weatherObj={gWeather}
-                         onClick={() => handleSmallWeatherClick(true, gLocation, gWeather, none)}
+                         onClick={() => handleSmallWeatherClick(true, gLocation, gWeather, null)}
         />
         {locationsWeather.length > 0
          ? locationsWeather.map((location, index) => {
