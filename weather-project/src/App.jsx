@@ -13,6 +13,7 @@ function App() {
   const [currentLocation, setCurrentLocation] = useState({});
   const [currentWeather, setCurrentWeather] = useState({});
   const [currentGeo, setCurrentGeo] = useState(false)
+  const [currentIndex, setCurrentIndex] = useState();
 
   const [searchIsVisible, setSearchIsVisible] = useState(false);
   const searchRef = useRef(null);
@@ -27,11 +28,19 @@ function App() {
     })
   }
 
-  function handleSmallWeatherClick (geo, locationObj, weatherObj) {
+  function handleSmallWeatherClick (geo, locationObj, weatherObj, index) {
     setCurrentGeo(geo);
     setCurrentLocation(locationObj);
     setCurrentWeather(weatherObj);
     setBigWeatherIsVisible(!bigWeatherIsVisible);
+    setCurrentIndex(index);
+  }
+
+  function handleDeletion (index) {
+    console.log('Deleting index:', index);
+    setLocations(locations.filter((location, i) => index !== i));
+    setLocationsWeather(locationsWeather.filter((location, i) => index !== i));
+    setBigWeatherIsVisible(false);
   }
 
   async function getCurrenLocation() {
@@ -112,14 +121,14 @@ function App() {
         <SmallWeatherBox geo={true} 
                          locationObj={gLocation}
                          weatherObj={gWeather}
-                         onClick={() => handleSmallWeatherClick(true, gLocation, gWeather)}
+                         onClick={() => handleSmallWeatherClick(true, gLocation, gWeather, none)}
         />
         {locationsWeather.length > 0
          ? locationsWeather.map((location, index) => {
           return <SmallWeatherBox geo={false}
                                   locationObj={locations[index]}
                                   weatherObj={location}
-                                  onClick={() => handleSmallWeatherClick(false, locations[index], location)}
+                                  onClick={() => handleSmallWeatherClick(false, locations[index], location, index)}
                                   key={`${locations[index].city}${locations[index].country}${locations[index].lat}${locations[index].lon}`}
           />
          })
@@ -129,7 +138,8 @@ function App() {
         {bigWeatherIsVisible && <BigWeatherBox geo={currentGeo}
                                                locationObj={currentLocation}
                                                weatherObj={currentWeather}
-                                               ref={bigWeatherRef}/>}
+                                               ref={bigWeatherRef}
+                                               del={() => handleDeletion(currentIndex)}/>}
       </div>  
       </>
     )

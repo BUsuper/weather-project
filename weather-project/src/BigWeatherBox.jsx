@@ -7,7 +7,7 @@ import { convertWindDirection, displayPrecipitationProbability, displayIcon } fr
 
 const BigWeatherBox = forwardRef(
 function BigWeatherBox(props, ref) {
-  const {geo, locationObj, weatherObj} = props;
+  const {geo, locationObj, weatherObj, del} = props;
   const forecastHoursIndecies = [1, 2, 3, 4];
   const { country, city } = locationObj;
   const { hourly: weather, hourly_units: units, daily, } = weatherObj;
@@ -55,7 +55,7 @@ function BigWeatherBox(props, ref) {
           return <TinyWeatherBox weatherObj={weatherObj} index={i} key={`forecast${i}`} />
         })}
       </div>
-      {geo ? <img src={trashIcon} className='deleteIconBig hidden'/> : <img src={trashIcon} className='deleteIconBig'/>}
+      {geo ? <img src={trashIcon} className='deleteIconBig hidden'/> : <img src={trashIcon} className='deleteIconBig' onClick={del}/>}
     </div>
   );
 }
