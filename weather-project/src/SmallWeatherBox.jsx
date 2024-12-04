@@ -24,8 +24,30 @@ function SmallWeatherBox({geo=false, locationObj, weatherObj, onClick}) {
   return (
     <div className="smallWeatherBox" onClick={onClick}>
       <div className='topRow'>
-          {geo ? <img src={locationArrow} className='geolocationIcon'/> : <img src={locationArrow} className='geolocationIcon hidden'/>}
-          <span className='location'>{city}</span>
+          { // Renders a geolocation icon and a shorter div if geo is true
+          geo ? 
+          <>
+            <img src={locationArrow} className='geolocationIcon'/>
+            <div className='location'>
+              {
+                city.length > 11 ?
+                <span className='scroll'>{city}</span> :
+                <span>{city}</span>
+              }
+            </div>
+          </>: 
+          <>
+            <img src={locationArrow} className='geolocationIcon hidden'/>
+            <div className='location long'>
+              {
+                city.length > 12 ?
+                <span className='scroll'>{city}</span> :
+                <span>{city}</span>
+              }
+            </div>
+          </>
+          }
+          
       </div>
       <div className='middleRow'>
           <img src={conditionsSrc} className='conditionsIcon'/>

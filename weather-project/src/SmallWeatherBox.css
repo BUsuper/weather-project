@@ -29,6 +29,12 @@
     display: inline-block;
     text-align: center;
     line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.long {
+    width: 190px;
 }
 
 .conditionsIcon {
@@ -55,5 +61,15 @@
 }
 
 .hidden {
-    visibility: hidden;
+    display: none;
+}
+
+.scroll{
+    display: inline-block;
+    animation: move 10s ease-in-out infinite;
+    position: relative;
+}
+@keyframes move {
+    25% { transform: translate(0, 0); left: 0%; }
+    75%, 100% { transform: translate(-100%, 0); left: 100%; }
 }
