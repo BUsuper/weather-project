@@ -30,12 +30,21 @@ function BigWeatherBox(props, ref) {
   } = daily;
 
   const conditionsSrc = displayIcon(rain[0], showers[0], snow[0], cloudCover[0], isDay[0]);
+  const locationName = `${city}, ${country}`;
 
   return (
     <div className="bigWeatherBox" ref={ref}>
       <div className='topRowBig'>
           {geo ? <img src={locationArrow} className='geolocationIconBig'/> : <img src={locationArrow} className='geolocationIconBig hidden'/>}
-          <span className='locationBig'>{city}, {country}</span>
+          <div className='locationBig'>
+            {
+            // Checks if the location name is too long to be fully displayed
+            locationName.length > 23 ?
+            // Only playes the animations if it is
+            <span className='scroll'>{city}, {country}</span> :
+            <span>{city}, {country}</span>
+            }
+            </div>
       </div>
       <div className='timeBig'>{time[0].slice(-5)}</div>
       <div className='middleRowBig'>
