@@ -18,6 +18,7 @@
     height: 270px;
     width: 380px;
     margin: 15px 0;
+    overflow-y: auto;
 }
 
 label {
