@@ -1,6 +1,6 @@
 import './SmallWeatherBox.css'
 import locationArrow from './assets/location-arrow.svg'
-import { convertWindDirection, displayPrecipitationProbability, displayIcon } from './weatherfunctions'
+import { convertWindDirection, displayPrecipitationProbability, displayIcon } from './utils'
 
 function SmallWeatherBox({geo=false, locationObj, weatherObj, onClick}) {
   const { country, city, lat, lon } = locationObj;

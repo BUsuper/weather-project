@@ -3,7 +3,7 @@ import './BigWeatherBox.css'
 import TinyWeatherBox from './TinyWeatherBox'
 import locationArrow from './assets/location-arrow.svg'
 import trashIcon from './assets/trash.svg'
-import { convertWindDirection, displayPrecipitationProbability, displayIcon } from './weatherfunctions'
+import { convertWindDirection, displayPrecipitationProbability, displayIcon } from './utils'
 
 const BigWeatherBox = forwardRef(
 function BigWeatherBox(props, ref) {
