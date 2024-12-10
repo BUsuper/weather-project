@@ -1,4 +1,5 @@
 import { forwardRef, useState } from 'react';
+import { GEOCODING_API_KEY as apiKey } from '../constants'
 import './SearchBox.css'
 
 const SearchBox = forwardRef(
@@ -9,7 +10,6 @@ function SearchBox(props, ref) {
   const [locSearchResults, setLocSearchResults] = useState([]);
 
   const updateListOfLocations = async (input) => {
-    const apiKey = '9487826a849c6e290364f57c634026fd';
     const geocodingURL = `http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=5&appid=${apiKey}`;
 
     try {
