@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import './App.css';
-import SmallWeatherBox from './SmallWeatherBox';
-import SmallAddBox from './SmallAddBox';
-import SearchBox from './SearchBox';
-import BigWeatherBox from './BigWeatherBox';
+import {SmallWeatherBox} from './components/SmallWeatherBox';
+import {SmallAddBox} from './components/';
+import {SearchBox} from './components';
+import {BigWeatherBox} from './components';
 
 function App() {
   const [gLocation, setGLocation] = useState({});

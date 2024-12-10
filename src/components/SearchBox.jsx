@@ -86,4 +86,4 @@ function SearchBox(props, ref) {
 }
 );
 
-export default SearchBox
+export {SearchBox}

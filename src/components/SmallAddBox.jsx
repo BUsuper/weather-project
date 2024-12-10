@@ -1,5 +1,5 @@
 import './SmallAddBox.css'
-import addIcon from './assets/plus.svg'
+import addIcon from '../assets/plus.svg'
 
 function SmallAddBox({ onClick }) {
   return (
@@ -11,4 +11,4 @@ function SmallAddBox({ onClick }) {
   );
 }
 
-export default SmallAddBox
+export {SmallAddBox}
