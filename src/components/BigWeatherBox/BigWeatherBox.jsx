@@ -1,11 +1,11 @@
 import { forwardRef } from 'react'
 import './BigWeatherBox.css'
-import {TinyWeatherBox} from './TinyWeatherBox'
-import locationArrow from '../assets/location-arrow.svg'
-import trashIcon from '../assets/trash.svg'
-import { convertWindDirection, displayPrecipitationProbability, displayIcon } from '../utils'
+import {TinyWeatherBox} from '../TinyWeatherBox/TinyWeatherBox'
+import locationArrow from '../../assets/location-arrow.svg'
+import trashIcon from '../../assets/trash.svg'
+import { convertWindDirection, displayPrecipitationProbability, displayIcon } from '../../utils'
 
-const BigWeatherBox = forwardRef(
+export const BigWeatherBox = forwardRef(
 function BigWeatherBox(props, ref) {
   const {geo, locationObj, weatherObj, del} = props;
   const forecastHoursIndecies = [1, 2, 3, 4];
@@ -69,5 +69,3 @@ function BigWeatherBox(props, ref) {
   );
 }
 )
-
-export {BigWeatherBox}

@@ -1,8 +1,8 @@
 import './SmallWeatherBox.css'
-import locationArrow from '../assets/location-arrow.svg'
-import { convertWindDirection, displayPrecipitationProbability, displayIcon } from '../utils'
+import locationArrow from '../../assets/location-arrow.svg'
+import { convertWindDirection, displayPrecipitationProbability, displayIcon } from '../../utils'
 
-function SmallWeatherBox({geo=false, locationObj, weatherObj, onClick}) {
+export function SmallWeatherBox({geo=false, locationObj, weatherObj, onClick}) {
   const { country, city, lat, lon } = locationObj;
   const { hourly: weather, hourly_units: units } = weatherObj;
   const { temperature_2m: temperature,
@@ -58,5 +58,3 @@ function SmallWeatherBox({geo=false, locationObj, weatherObj, onClick}) {
     </div>
   );
 }
-
-export {SmallWeatherBox}

@@ -1,8 +1,8 @@
 import { forwardRef, useState } from 'react';
-import { GEOCODING_API_KEY as apiKey } from '../constants'
+import { GEOCODING_API_KEY as apiKey } from '../../constants'
 import './SearchBox.css'
 
-const SearchBox = forwardRef(
+export const SearchBox = forwardRef(
 function SearchBox(props, ref) {
   const { onSubmit } = props;
 
@@ -85,5 +85,3 @@ function SearchBox(props, ref) {
   );
 }
 );
-
-export {SearchBox}

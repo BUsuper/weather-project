@@ -1,7 +1,5 @@
-import { BigWeatherBox } from './BigWeatherBox'
-import { SearchBox } from './SearchBox'
-import { TinyWeatherBox } from './TinyWeatherBox'
-import { SmallAddBox } from './SmallAddBox'
-import { SmallWeatherBox } from './SmallWeatherBox'
-
-export {BigWeatherBox, SearchBox, TinyWeatherBox, SmallAddBox, SmallWeatherBox}
+export { BigWeatherBox } from './BigWeatherBox/'
+export { SearchBox } from './SearchBox'
+export { TinyWeatherBox } from './TinyWeatherBox'
+export { SmallAddBox } from './SmallAddBox'
+export { SmallWeatherBox } from './SmallWeatherBox'

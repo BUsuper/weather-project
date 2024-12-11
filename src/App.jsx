@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './App.css';
-import {SmallWeatherBox} from './components/SmallWeatherBox';
+import {SmallWeatherBox} from './components/SmallWeatherBox/SmallWeatherBox';
 import {SmallAddBox} from './components/';
 import {SearchBox} from './components';
 import {BigWeatherBox} from './components';
