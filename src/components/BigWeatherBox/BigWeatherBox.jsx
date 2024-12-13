@@ -6,8 +6,7 @@ import trashIcon from '../../assets/trash.svg'
 import { convertWindDirection, displayPrecipitationProbability, displayIcon } from '../../utils'
 
 export const BigWeatherBox = forwardRef(
-function BigWeatherBox(props, ref) {
-  const {geo, locationObj, weatherObj, del} = props;
+function BigWeatherBox({geo, locationObj, weatherObj, del}, ref) {
   const forecastHoursIndecies = [1, 2, 3, 4];
   const { country, city } = locationObj;
   const { hourly: weather, hourly_units: units, daily, } = weatherObj;

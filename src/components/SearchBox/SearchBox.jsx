@@ -2,8 +2,7 @@ import { forwardRef, useState } from 'react';
 import './SearchBox.css'
 
 export const SearchBox = forwardRef(
-function SearchBox(props, ref) {
-  const { onSubmit } = props;
+function SearchBox({ onSubmit }, ref) {
   const apiKey = import.meta.env.VITE_GEOCODING_API_KEY;
 
   const [userInput, setUserInput] = useState('');
