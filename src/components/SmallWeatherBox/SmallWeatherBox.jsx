@@ -40,7 +40,7 @@ export function SmallWeatherBox({geo=false, locationObj, weatherObj, onClick}) {
             <img src={locationArrow} className='geolocationIcon hidden'/>
             <div className='location long'>
               {
-                city.length > 12 ?
+                city.length > 13 ?
                 <span className='scroll'>{city}</span> :
                 <span>{city}</span>
               }
