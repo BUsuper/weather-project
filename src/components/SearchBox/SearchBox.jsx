@@ -1,10 +1,10 @@
 import { forwardRef, useState } from 'react';
-import { GEOCODING_API_KEY as apiKey } from '../../constants'
 import './SearchBox.css'
 
 export const SearchBox = forwardRef(
 function SearchBox(props, ref) {
   const { onSubmit } = props;
+  const apiKey = import.meta.env.VITE_GEOCODING_API_KEY;
 
   const [userInput, setUserInput] = useState('');
   const [locSearchResults, setLocSearchResults] = useState([]);
