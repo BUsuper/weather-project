@@ -4,6 +4,7 @@ import {SmallWeatherBox} from './components/SmallWeatherBox/SmallWeatherBox';
 import {SmallAddBox} from './components/';
 import {SearchBox} from './components';
 import {BigWeatherBox} from './components';
+import { BigModal } from './components';
 
 function App() {
   const [gLocation, setGLocation] = useState({});
@@ -19,7 +20,7 @@ function App() {
   const searchRef = useRef(null);
 
   const [bigWeatherIsVisible, setBigWeatherIsVisible] = useState(false);
-  const bigWeatherRef = useRef(null);
+  const bigModalRef = useRef(null);
 
   function handleLocationAddition (coordinates) {
     setLocations([...locations, coordinates])
@@ -102,7 +103,7 @@ function App() {
   // Makes BigWeatherBox disappear when the user clicks somewhere outside of it
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (bigWeatherRef.current && !bigWeatherRef.current.contains(e.target)) {
+      if (bigModalRef.current && !bigModalRef.current.contains(e.target)) {
         setBigWeatherIsVisible(false);
       }
     };
@@ -111,7 +112,7 @@ function App() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [bigWeatherRef]);
+  }, [bigModalRef]);
 
   // Renders when the data about user's weather is loaded, if not, renders 'Loading...'
   if (gWeather && gWeather.hourly && gWeather.hourly_units) {
@@ -135,11 +136,11 @@ function App() {
          : ''}
         <SmallAddBox onClick={() => setSearchIsVisible(!searchIsVisible)}/>
         {searchIsVisible && <SearchBox ref={searchRef} onSubmit={handleLocationAddition}/>}
-        {bigWeatherIsVisible && <BigWeatherBox geo={currentGeo}
+        {bigWeatherIsVisible && <BigModal ref={bigModalRef}><BigWeatherBox geo={currentGeo}
                                                locationObj={currentLocation}
                                                weatherObj={currentWeather}
-                                               ref={bigWeatherRef}
-                                               del={() => handleDeletion(currentIndex)}/>}
+                                               del={() => handleDeletion(currentIndex)}/>
+                                               </BigModal>}
       </div>  
       </>
     )

@@ -2,9 +2,11 @@ import { forwardRef } from 'react'
 import './BigModal.css'
 
 export const BigModal = forwardRef(
-function BigModal(props, ref) {
+function BigModal({ children }, ref) {
   return (
-    <div className="bigModal" ref={ref}></div>    
+    <div className="bigModal" ref={ref}>
+      { children }
+    </div>    
   );
 }
 )

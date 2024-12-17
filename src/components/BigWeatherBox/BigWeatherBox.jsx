@@ -1,12 +1,10 @@
-import { forwardRef } from 'react'
 import './BigWeatherBox.css'
 import {TinyWeatherBox} from '../TinyWeatherBox/TinyWeatherBox'
 import locationArrow from '../../assets/location-arrow.svg'
 import trashIcon from '../../assets/trash.svg'
 import { convertWindDirection, displayPrecipitationProbability, displayIcon } from '../../utils'
 
-export const BigWeatherBox = forwardRef(
-function BigWeatherBox({geo, locationObj, weatherObj, del}, ref) {
+export function BigWeatherBox({geo, locationObj, weatherObj, del}) {
   const forecastHoursIndecies = [1, 2, 3, 4];
   const { country, city } = locationObj;
   const { hourly: weather, hourly_units: units, daily, } = weatherObj;
@@ -32,7 +30,7 @@ function BigWeatherBox({geo, locationObj, weatherObj, del}, ref) {
   const locationName = `${city}, ${country}`;
 
   return (
-    <div className="bigWeatherBox" ref={ref}>
+    <div className="bigWeatherBox">
       <div className='topRowBig'>
           {geo ? <img src={locationArrow} className='geolocationIconBig'/> : <img src={locationArrow} className='geolocationIconBig hidden'/>}
           <div className='locationBig'>
@@ -67,4 +65,3 @@ function BigWeatherBox({geo, locationObj, weatherObj, del}, ref) {
     </div>
   );
 }
-)
