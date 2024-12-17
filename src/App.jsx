@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import './App.css';
-import {SmallWeatherBox} from './components/SmallWeatherBox/SmallWeatherBox';
-import {SmallAddBox} from './components/';
-import {SearchBox} from './components';
-import {BigWeatherBox} from './components';
+import { SmallWeatherBox } from './components/';
+import { SmallAddBox } from './components/';
+import { SearchBox } from './components';
+import { BigWeatherBox } from './components';
 import { BigModal } from './components';
 
 function App() {
