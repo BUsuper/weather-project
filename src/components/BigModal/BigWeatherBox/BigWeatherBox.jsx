@@ -1,8 +1,8 @@
 import './BigWeatherBox.css'
-import {TinyWeatherBox} from '../TinyWeatherBox/TinyWeatherBox'
-import locationArrow from '../../assets/location-arrow.svg'
-import trashIcon from '../../assets/trash.svg'
-import { convertWindDirection, displayPrecipitationProbability, displayIcon } from '../../utils'
+import {TinyWeatherBox} from './TinyWeatherBox'
+import locationArrow from '../../../assets/location-arrow.svg'
+import trashIcon from '../../../assets/trash.svg'
+import { convertWindDirection, displayPrecipitationProbability, displayIcon } from '../../../utils'
 
 export function BigWeatherBox({geo, locationObj, weatherObj, del}) {
   const forecastHoursIndecies = [1, 2, 3, 4];

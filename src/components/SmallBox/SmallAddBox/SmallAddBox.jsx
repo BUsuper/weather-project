@@ -1,5 +1,5 @@
 import './SmallAddBox.css'
-import addIcon from '../../assets/plus.svg'
+import addIcon from '../../../assets/plus.svg'
 
 export function SmallAddBox({ onClick }) {
   return (

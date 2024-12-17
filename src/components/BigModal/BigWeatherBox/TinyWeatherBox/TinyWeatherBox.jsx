@@ -1,5 +1,5 @@
 import './TinyWeatherBox.css'
-import { displayPrecipitationProbability, displayIcon } from '../../utils';
+import { displayPrecipitationProbability, displayIcon } from '../../../../utils';
 
 export function TinyWeatherBox({ weatherObj, index }) {
   const { hourly: weather, hourly_units: units } = weatherObj;
