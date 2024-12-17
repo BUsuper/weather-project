@@ -26,6 +26,8 @@ function App() {
     getWeather(coordinates.lat, coordinates.lon).then(weatherResult => {
       setLocationsWeather([...locationsWeather, weatherResult]);
     })
+    // Hides the SearchBox after the location is added
+    setIsSearchVisible(false);
   }
 
   function handleSmallWeatherClick (geo, locationObj, weatherObj, index) {
