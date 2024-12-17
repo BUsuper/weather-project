@@ -6,4 +6,11 @@
     padding: 10px 10px;
     display: flex;
     align-items: center;
+
+    /* Prevent selection */
+    -webkit-user-select: none;
+    -ms-user-select: none; 
+    user-select: none;
+
+    cursor: pointer;
 }

@@ -7,4 +7,11 @@
     background-color: white;
     z-index: 100;
     position: fixed;
+
+    /* Prevent selection */
+    -webkit-user-select: none;
+    -ms-user-select: none; 
+    user-select: none;
+
+    cursor: default;
 }
