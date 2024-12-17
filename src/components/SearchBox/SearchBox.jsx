@@ -1,8 +1,7 @@
-import { forwardRef, useState } from 'react';
+import { useState } from 'react';
 import './SearchBox.css'
 
-export const SearchBox = forwardRef(
-function SearchBox({ onSubmit }, ref) {
+export function SearchBox({ onSubmit }) {
   const apiKey = import.meta.env.VITE_GEOCODING_API_KEY;
 
   const [userInput, setUserInput] = useState('');
@@ -51,7 +50,7 @@ function SearchBox({ onSubmit }, ref) {
   }
 
   return (
-    <div className='searchBox' ref={ref}>
+    <div className='searchBox'>
       <input id='searchInput' autoFocus placeholder='Enter a city name' onChange={handleInputChange}/>
       <form onSubmit={handleSubmit}>
         <div id='searchResultsContainer'>
@@ -83,4 +82,3 @@ function SearchBox({ onSubmit }, ref) {
     </div>
   );
 }
-);

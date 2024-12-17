@@ -16,10 +16,8 @@ function App() {
   const [currentGeo, setCurrentGeo] = useState(false)
   const [currentIndex, setCurrentIndex] = useState();
 
-  const [searchIsVisible, setSearchIsVisible] = useState(false);
-  const searchRef = useRef(null);
-
-  const [bigWeatherIsVisible, setBigWeatherIsVisible] = useState(false);
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [isBigWeatherVisible, setIsBigWeatherVisible] = useState(false);
   const bigModalRef = useRef(null);
 
   function handleLocationAddition (coordinates) {
@@ -33,15 +31,19 @@ function App() {
     setCurrentGeo(geo);
     setCurrentLocation(locationObj);
     setCurrentWeather(weatherObj);
-    setBigWeatherIsVisible(!bigWeatherIsVisible);
+    setIsBigWeatherVisible(true);
     setCurrentIndex(index);
+  }
+
+  function handleSmallAddBoxClick () {
+    setIsSearchVisible(true);
   }
 
   function handleDeletion (index) {
     console.log('Deleting index:', index);
     setLocations(locations.filter((location, i) => index !== i));
     setLocationsWeather(locationsWeather.filter((location, i) => index !== i));
-    setBigWeatherIsVisible(false);
+    setIsBigWeatherVisible(false);
   }
 
   async function getCurrenLocation() {
@@ -86,25 +88,12 @@ function App() {
     }
   }, [gLocation]);
 
-  // Makes SearchBox disappear when the user clicks somewhere outside of it
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (searchRef.current && !searchRef.current.contains(e.target)) {
-        setSearchIsVisible(false);
-      }
-    };
-  
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [searchRef]);
-
-  // Makes BigWeatherBox disappear when the user clicks somewhere outside of it
+  // Makes SearchBox or BigWeatherBox within BigModal disappear when the user clicks somewhere outside of it
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (bigModalRef.current && !bigModalRef.current.contains(e.target)) {
-        setBigWeatherIsVisible(false);
+        setIsSearchVisible(false);
+        setIsBigWeatherVisible(false);
       }
     };
   
@@ -134,9 +123,9 @@ function App() {
           />
          })
          : ''}
-        <SmallAddBox onClick={() => setSearchIsVisible(!searchIsVisible)}/>
-        {searchIsVisible && <SearchBox ref={searchRef} onSubmit={handleLocationAddition}/>}
-        {bigWeatherIsVisible && <BigModal ref={bigModalRef}><BigWeatherBox geo={currentGeo}
+        <SmallAddBox onClick={handleSmallAddBoxClick}/>
+        {isSearchVisible && <BigModal ref={bigModalRef}><SearchBox onSubmit={handleLocationAddition}/></BigModal>}
+        {isBigWeatherVisible && <BigModal ref={bigModalRef}><BigWeatherBox geo={currentGeo}
                                                locationObj={currentLocation}
                                                weatherObj={currentWeather}
                                                del={() => handleDeletion(currentIndex)}/>
