@@ -124,12 +124,15 @@ function App() {
          })
          : ''}
         <SmallAddBox onClick={handleSmallAddBoxClick}/>
-        {isSearchVisible && <BigModal ref={bigModalRef}><SearchBox onSubmit={handleLocationAddition}/></BigModal>}
-        {isBigWeatherVisible && <BigModal ref={bigModalRef}><BigWeatherBox geo={currentGeo}
-                                               locationObj={currentLocation}
-                                               weatherObj={currentWeather}
-                                               del={() => handleDeletion(currentIndex)}/>
-                                               </BigModal>}
+        {isSearchVisible && <BigModal ref={bigModalRef}>
+                              <SearchBox onSubmit={handleLocationAddition}/>
+                            </BigModal>}
+        {isBigWeatherVisible && <BigModal ref={bigModalRef}>
+                                  <BigWeatherBox geo={currentGeo}
+                                                 locationObj={currentLocation}
+                                                 weatherObj={currentWeather}
+                                                 del={() => handleDeletion(currentIndex)}/>
+                                </BigModal>}
       </div>  
       </>
     )
