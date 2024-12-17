@@ -1,6 +1,7 @@
 export { BigWeatherBox } from './BigWeatherBox/'
 export { SearchBox } from './SearchBox'
 export { TinyWeatherBox } from './TinyWeatherBox'
+export { SmallBox } from './SmallBox'
 export { SmallAddBox } from './SmallAddBox'
 export { SmallWeatherBox } from './SmallWeatherBox'
 export { BigModal } from './BigModal'

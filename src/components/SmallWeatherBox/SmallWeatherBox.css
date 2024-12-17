@@ -1,9 +1,6 @@
 .smallWeatherBox {
     width: 190px;
     height: 190px;
-    border: black 7.5px solid;
-    border-radius: 22.5px;
-    padding: 10px 10px;
 }
 
 .topRow {

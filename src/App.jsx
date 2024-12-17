@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './App.css';
+import { SmallBox } from './components';
 import { SmallWeatherBox } from './components/';
 import { SmallAddBox } from './components/';
 import { SearchBox } from './components';
@@ -108,22 +109,27 @@ function App() {
     return (
       <>
       <div id="weatherContainer">
-        <SmallWeatherBox geo={true} 
-                         locationObj={gLocation}
-                         weatherObj={gWeather}
-                         onClick={() => handleSmallWeatherClick(true, gLocation, gWeather, null)}
-        />
+        <SmallBox>
+          <SmallWeatherBox geo={true} 
+                          locationObj={gLocation}
+                          weatherObj={gWeather}
+                          onClick={() => handleSmallWeatherClick(true, gLocation, gWeather, null)}
+          />
+        </SmallBox>
         {locationsWeather.length > 0
          ? locationsWeather.map((location, index) => {
-          return <SmallWeatherBox geo={false}
-                                  locationObj={locations[index]}
-                                  weatherObj={location}
-                                  onClick={() => handleSmallWeatherClick(false, locations[index], location, index)}
-                                  key={`${locations[index].city}${locations[index].country}${locations[index].lat}${locations[index].lon}`}
-          />
+            return <SmallBox key={`${locations[index].city}${locations[index].country}${locations[index].lat}${locations[index].lon}`}>
+                      <SmallWeatherBox geo={false}
+                                      locationObj={locations[index]}
+                                      weatherObj={location}
+                                      onClick={() => handleSmallWeatherClick(false, locations[index], location, index)}
+                      />
+                  </SmallBox>
          })
          : ''}
-        <SmallAddBox onClick={handleSmallAddBoxClick}/>
+        <SmallBox>
+          <SmallAddBox onClick={handleSmallAddBoxClick}/>
+        </SmallBox>
         {isSearchVisible && <BigModal ref={bigModalRef}>
                               <SearchBox onSubmit={handleLocationAddition}/>
                             </BigModal>}
