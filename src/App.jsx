@@ -7,7 +7,7 @@ import { SearchBox } from './components';
 import { BigWeatherBox } from './components';
 import { BigModal } from './components';
 
-function App() {
+export default function App() {
   const [gLocation, setGLocation] = useState({});
   const [gWeather, setGWeather] = useState({});
   const [locations, setLocations] = useState([]);
@@ -148,5 +148,3 @@ function App() {
     return <div>Loading...</div>;
   }
 }
-
-export default App
