@@ -1,0 +1,10 @@
+.bigModal {
+    width: 380px;
+    height: 380px;
+    border: black 7.5px solid;
+    border-radius: 22.5px;
+    padding: 10px;
+    background-color: white;
+    z-index: 100;
+    position: fixed;
+}

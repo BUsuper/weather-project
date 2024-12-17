@@ -1,0 +1,1 @@
+export { BigModal } from './BigModal';
