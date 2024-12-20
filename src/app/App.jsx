@@ -6,7 +6,7 @@ import {
   SearchBox,
   BigWeatherBox,
   BigModal
-} from './components';
+} from '../components';
 import useApp from './useApp';
 
 export default function App() {
