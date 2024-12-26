@@ -85,6 +85,10 @@
     cursor: pointer;
 }
 
+.wide {
+    width: 380px;
+}
+
 .scroll{
     display: inline-block;
     animation: move 10s ease-in-out infinite;

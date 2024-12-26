@@ -1,3 +1,4 @@
-import { DIRECTIONS } from "./constants";
+import { DIRECTIONS } from "./directions";
+import { COUNTRIES } from "./counries";
 
-export { DIRECTIONS };
+export { DIRECTIONS, COUNTRIES };

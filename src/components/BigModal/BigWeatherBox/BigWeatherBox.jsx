@@ -2,6 +2,7 @@ import './BigWeatherBox.css'
 import {TinyWeatherBox} from './TinyWeatherBox'
 import locationArrow from '../../../assets/location-arrow.svg'
 import trashIcon from '../../../assets/trash.svg'
+import { COUNTRIES } from '../../../constants'
 import { convertWindDirection, displayPrecipitationProbability, displayIcon } from '../../../utils'
 
 export function BigWeatherBox({geo, locationObj, weatherObj, del}) {
@@ -27,21 +28,39 @@ export function BigWeatherBox({geo, locationObj, weatherObj, del}) {
   } = daily;
 
   const conditionsSrc = displayIcon(rain[0], showers[0], snow[0], cloudCover[0], isDay[0]);
-  const locationName = `${city}, ${country}`;
+  const locationName =  geo ? `${city}, ${country}` : `${city}, ${COUNTRIES[country]}`;
 
   return (
     <div className="bigWeatherBox">
       <div className='topRowBig'>
-          {geo ? <img src={locationArrow} className='geolocationIconBig'/> : <img src={locationArrow} className='geolocationIconBig hidden'/>}
+          {geo 
+          ? 
+          <>
+          <img src={locationArrow} className='geolocationIconBig'/>
           <div className='locationBig'>
             {
             // Checks if the location name is too long to be fully displayed
             locationName.length > 23 ?
             // Only playes the animations if it is
-            <span className='scroll'>{city}, {country}</span> :
-            <span>{city}, {country}</span>
+            <span className='scroll'>{locationName}</span> :
+            <span>{locationName}</span>
             }
             </div>
+            </> 
+            :
+            <>
+            <img src={locationArrow} className='geolocationIconBig hidden'/>
+            <div className='locationBig wide'>
+            {
+            // Checks if the location name is too long to be fully displayed
+            locationName.length > 26 ?
+            // Only playes the animations if it is
+            <span className='scroll'>{locationName}</span> :
+            <span>{locationName}</span>
+            }
+            </div> 
+            </>
+          }
       </div>
       <div className='timeBig'>{time[0].slice(-5)}</div>
       <div className='middleRowBig'>
