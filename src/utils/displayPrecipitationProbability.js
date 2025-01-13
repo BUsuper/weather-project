@@ -1,4 +1,4 @@
-function displayPrecipitationProbability (probability, snow, rain, showers, temperature) {
+export function displayPrecipitationProbability (probability, snow, rain, showers, temperature) {
     let type;
     let largest = 0;
 
@@ -21,5 +21,3 @@ function displayPrecipitationProbability (probability, snow, rain, showers, temp
   
       return `${type}: ${probability}%`;
 }
-
-export {displayPrecipitationProbability}

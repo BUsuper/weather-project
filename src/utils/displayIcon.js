@@ -4,7 +4,7 @@ import cloudyIcon from '../assets/cloudy.svg'
 import rainyIcon from '../assets/rain.svg'
 import snowyIcon from '../assets/snow.svg'
 
-function displayIcon (rain, showers, snow, cloudCover, isDay) {
+export function displayIcon (rain, showers, snow, cloudCover, isDay) {
   if (rain >= 1 || showers >= 1) {
     return rainyIcon;
   }
@@ -20,5 +20,3 @@ function displayIcon (rain, showers, snow, cloudCover, isDay) {
     return moonIcon;
   }
 }
-
-export {displayIcon}

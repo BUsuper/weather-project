@@ -1,5 +1,3 @@
-import { convertWindDirection } from "./convertWindDirection";
-import { displayPrecipitationProbability } from "./displayPrecipitationProbability";
-import { displayIcon } from "./displayIcon";
-
-export {convertWindDirection, displayPrecipitationProbability, displayIcon}
+export { convertWindDirection } from "./convertWindDirection";
+export { displayPrecipitationProbability } from "./displayPrecipitationProbability";
+export { displayIcon } from "./displayIcon";

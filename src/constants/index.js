@@ -1,4 +1,4 @@
-import { DIRECTIONS } from "./constants";
-import { GEOCODING_API_KEY } from "./constants";
+import { DIRECTIONS } from "./directions";
+import { COUNTRIES } from "./counries";
 
-export { DIRECTIONS, GEOCODING_API_KEY };
+export { DIRECTIONS, COUNTRIES };

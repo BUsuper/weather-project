@@ -1,0 +1,43 @@
+.searchBox {
+    width: 380px;
+    height: 380px;
+}
+
+#searchInput {
+    height: 34px;
+    width: 374px;
+}
+
+#searchResultsContainer {
+    height: 270px;
+    width: 380px;
+    margin: 15px 0;
+    overflow-y: auto;
+}
+
+label {
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+}
+
+/* Hides the 'radio' part of the radio button */
+input[type="radio"]{
+    display: none;
+  }
+
+.searchResult:hover {
+    background-color: black;
+    color: white;
+}
+
+input[type="radio"]:checked + label {
+    background-color: black;
+    color: white;
+}
+
+#confirmButton {
+    height: 40px;
+    width: 100px;
+    cursor: pointer;
+}
