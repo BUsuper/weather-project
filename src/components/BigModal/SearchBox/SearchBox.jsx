@@ -110,7 +110,11 @@ export function SearchBox({ onSubmit }) {
             )
           }
         </div>
-        <button id="confirmButton" type="submit">
+        <button
+          id="confirmButton"
+          type="submit"
+          disabled={locSearchResults.length < 1}
+        >
           Confirm
         </button>
       </form>
